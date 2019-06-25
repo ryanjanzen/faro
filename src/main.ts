@@ -1,5 +1,4 @@
-import { SomeModule } from './someModule.js';
+import { RayTracer } from './rayTracer.js';
 
-console.log('Starting...');
-const someModule = new SomeModule("someInput");
-someModule.doWork();
+const rayTracer = new RayTracer("canvas");
+rayTracer.trace();
