@@ -1,4 +1,4 @@
-import * from './js/primitives';
+import { Point3D, createPoint3D } from "./tracing/primitives.js";
 
 export class RayTracer {
     constructor(private canvasId: string, private width = 300, private height = 150) {
@@ -6,21 +6,21 @@ export class RayTracer {
 
     trace() {
         const element = document.getElementById(this.canvasId);
-            if (element === null) {
-                return;
-            }
+        if (element === null) {
+            return;
+        }
 
-            const canvas = element as HTMLCanvasElement;
-            const context = canvas.getContext("2d");
-            if (context === null) {
-                return;
-            }
-            const imageData = context.createImageData(this.width, this.height);
-            const data = imageData.data;
-            
-            // TODO: Manipulate data
-            const point = (1,2, 3);
+        const canvas = element as HTMLCanvasElement;
+        const context = canvas.getContext("2d");
+        if (context === null) {
+            return;
+        }
+        const imageData = context.createImageData(this.width, this.height);
+        const data = imageData.data;
 
-            context.putImageData(imageData, 0, 0);
+        // TODO: Manipulate data
+        const point: Point3D = createPoint3D(1, 2, 3);
+
+        context.putImageData(imageData, 0, 0);
     }
 }
