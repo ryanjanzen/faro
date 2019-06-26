@@ -1,3 +1,5 @@
+import { Either } from "./either";
+
 export interface Point3D { x: number, y: number, z: number };
 export let createPoint3D = (x: number, y: number, z: number): Point3D => {
     return { x: x, y: y, z: z };
@@ -14,12 +16,12 @@ export let createRay = (origin: Point3D, direction: Vector3D): Ray => {
 }
 
 export interface PositiveNumber { n: number };
-export let createPositiveNumber = (n: number): PositiveNumber => {
+export let createPositiveNumber = (n: number): Either.Either<string, PositiveNumber> => {
     if (n <= 0.0) {
-        throw 'Number must be positive.';
+        return Either.createLeft ('Number must be positive.');
     }
 
-    return { n: n };
+    return Either.createRight ({ n:n });
 }
 
 export interface Normal { x: number, y: number, z: number };
